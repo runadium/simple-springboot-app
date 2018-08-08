@@ -1,0 +1,6 @@
+.git
+.classpath
+.project
+.metadata
+# maven-repo/
+# target/
