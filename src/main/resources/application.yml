@@ -6,3 +6,31 @@ server:
         key-store: classpath:selfsigned.jks
         key-store-password: password
         key-password: password
+spring:
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:postgresql://localhost:5432/demo
+        username: demo
+        password: demo
+    jpa:
+        database: POSTGRESQL
+        show-sql: false
+        generate-ddl: true
+        properties:
+            hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+        hibernate:
+            ddl-auto: update
+    data:
+        rest:
+            basePath: /api
+logging:
+    level:
+        root: INFO
+        ConditionEvaluationReportLoggingListener: DEBUG
+        org.springframework.data: WARN
+        org.springframework.web: DEBUG
+        o.s.b.w.embedded.tomcat.TomcatWebServer: INFO
+        org.hibernate: WARN
+        org.apache: INFO
+        org.apache.catalina.startup.DigesterFactory: OFF
+        

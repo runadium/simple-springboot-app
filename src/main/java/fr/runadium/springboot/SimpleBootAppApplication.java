@@ -10,9 +10,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SimpleBootAppApplication {
 
-	
-	/* Add support for http connector */ 
-	
+	/* Add support for http connector */
 	@Bean
 	public ServletWebServerFactory servletContainer() {
 		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
@@ -25,9 +23,9 @@ public class SimpleBootAppApplication {
 		connector.setPort(8080);
 		return connector;
 	}
-	
+
 	/* *************************************** */
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(SimpleBootAppApplication.class, args);
 	}

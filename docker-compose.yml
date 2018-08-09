@@ -1,0 +1,35 @@
+version: '2'
+services:
+  demo-app:
+    #image: demo-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - POSTGRES_USERNAME=demo
+      - POSTGRES_PASSWORD=verysecuredpassword
+      - APP_SLEEP=10
+    ports:
+      - 8080:8080
+      - 8443:8443
+    networks:
+      - demo-net
+    depends_on:
+      - demo-postgres
+    links:
+      - demo-postgres:super-power-postgres
+    #volumes:
+    #  - db-data:/var/lib/postgresql/data
+  demo-postgres:
+    image: postgres:9.6.5
+    environment:
+      - POSTGRES_DB=demo
+      - POSTGRES_USER=demo
+      - POSTGRES_PASSWORD=verysecuredpassword
+    networks:
+      - demo-net
+    #volumes:
+      #  - db-data:/var/lib/postgresql/data
+networks:
+  demo-net:
